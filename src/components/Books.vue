@@ -1,13 +1,14 @@
 <template>
   <div>
         <h1>Books</h1>
+        <input type="text" class="form-control" v-model="search" placeholder="search books">
         <div class="books">
-            <div class="col my-5" :key="book.id" v-for="book in books">
+            <div class="col my-5" :key="book.id" v-for="book in filteredBooks">
                 <div :id="'book-' + book.id"  class="book">
-                    <a :href="'/books/' + book.id + '/edit'">
+                    <router-link v-bind:to="'/book/' + book.id">
                         <div class="card text-center">
                             <div class="card-title">
-                                <h4>{{book.nom}}</h4>
+                                <h4>{{ book.nom | to-uppercase }}</h4>
                             </div>
                             <div class="card-body">
                                 <p>{{book.id}}</p>
@@ -18,7 +19,7 @@
                                 <p>{{book.publicationDate}}</p>
                             </div>
                         </div>
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -26,11 +27,15 @@
 </template>
 
 <script>
+
+import searchMixin from '../mixins/searchMixin'
+
 export default {
     name: 'Books',
     data() {
         return {
-            books: []
+            books: [],
+            search: ''
         }
     },
     created() {
@@ -52,7 +57,13 @@ export default {
         //     console.log("Erreur")
         // });
         
-    }
+    },
+    computed: {
+        
+    },
+    mixins: [
+        searchMixin
+    ]
 }
 </script>
 

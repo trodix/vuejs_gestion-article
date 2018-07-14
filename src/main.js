@@ -7,6 +7,13 @@ import Routes from './routes.js'
 Vue.use(VueResource)
 Vue.use(VueRouter)
 
+// filters
+Vue.filter('to-uppercase', function(value) {
+  console.log(value)
+  if (!value) return '';
+  return value.toUpperCase();
+});
+
 const router = new VueRouter({
   routes: Routes,
   mode: 'history'
