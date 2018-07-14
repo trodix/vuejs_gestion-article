@@ -2,8 +2,9 @@
     <div>
         <app-navbar></app-navbar>
         <div class="container">
-            <app-books></app-books>
-            <app-addBook></app-addBook>
+            <!-- <app-books></app-books>
+            <app-addBook></app-addBook> -->
+            <router-view></router-view>
         </div>
     </div>
 </template>
