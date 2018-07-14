@@ -35,13 +35,7 @@ export default {
     },
     created() {
     
-        // this.$http.get("http://127.0.0.1:8000/api/books", {mode: 'no-cors'})
-        // .then(response => {
-        //     return this.books = response.body
-        // }, response => {
-
-        // });
-        fetch("https://jsonplaceholder.typicode.com/posts").then(response => {
+        this.$http.get("https://jsonplaceholder.typicode.com/posts", {mode: 'no-cors'}).then(response => {
             response.json().then(data => {
                 console.log(data)
                 return this.books = data
@@ -49,6 +43,14 @@ export default {
         }, response => {
             console.log("Erreur")
         });
+        // fetch("https://jsonplaceholder.typicode.com/posts").then(response => {
+        //     response.json().then(data => {
+        //         console.log(data)
+        //         return this.books = data
+        //     });
+        // }, response => {
+        //     console.log("Erreur")
+        // });
         
     }
 }
