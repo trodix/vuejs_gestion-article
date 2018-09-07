@@ -3,12 +3,13 @@
         <h1>Books</h1>
         <input type="text" class="form-control" v-model="search" placeholder="search books">
         <div class="books">
-            <div class="col my-5" :key="book.id" v-for="book in filteredBooks">
+            <!-- <div class="col my-5" :key="book.id" v-for="book in filteredBooks"> -->
+            <div class="col my-5" :key="book.id" v-for="book in books">
                 <div :id="'book-' + book.id"  class="book">
                     <router-link v-bind:to="'/book/' + book.id">
                         <div class="card text-center">
                             <div class="card-title">
-                                <h4>{{ book.nom | to-uppercase }}</h4>
+                                <h4>{{ book.nom }}</h4>
                             </div>
                             <div class="card-body">
                                 <p>{{book.id}}</p>
@@ -40,7 +41,7 @@ export default {
     },
     created() {
     
-        this.$http.get("https://jsonplaceholder.typicode.com/posts", {mode: 'no-cors'}).then(response => {
+        this.$http.get("http://127.0.0.1:8000/api/books.json").then(response => {
             response.json().then(data => {
                 console.log(data)
                 return this.books = data
@@ -62,7 +63,7 @@ export default {
         
     },
     mixins: [
-        searchMixin
+        // searchMixin
     ]
 }
 </script>

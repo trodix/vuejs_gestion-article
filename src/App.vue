@@ -29,8 +29,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    nav {
-        background-color: #6c5ce7;
-    }
+
 </style>
 

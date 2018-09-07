@@ -41,17 +41,23 @@ export default {
                 isbn: "",
                 title: "",
                 description: "",
-                author: ""
+                author: "",
+                publicationDate: ""
             }
         }      
   },
   methods: {
-      post: function() {
-          this.$http.post("https://jsonplaceholder.typicode.com/posts", {
+      post() {
+          this.$http.post("http://127.0.0.1:8000/api/books", {
+              isbn: this.book.isbn,
               title: this.book.title,
-              body: this.book.description
-          }).then(data => {
-              console.log(data);
+              description: this.book.description,
+              author: this.book.author,
+              publicationDate: new Date().toISOString()
+          }).then(data => { 
+              console.log(data)
+          }, (err) => {
+              console.log(err)
           });
       }
   }
