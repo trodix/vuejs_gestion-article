@@ -3,8 +3,8 @@
         <h1>Books</h1>
         <input type="text" class="form-control" v-model="search" placeholder="search books">
         <div class="books">
-            <!-- <div class="col my-5" :key="book.id" v-for="book in filteredBooks"> -->
-            <div class="col my-5" :key="book.id" v-for="book in books">
+            <div class="col my-5" :key="book.id" v-for="book in filteredBooks">
+            <!-- <div class="col my-5" :key="book.id" v-for="book in books"> -->
                 <div :id="'book-' + book.id"  class="book">
                     <router-link v-bind:to="'/book/' + book.id">
                         <div class="card text-center">
@@ -60,10 +60,10 @@ export default {
         
     },
     computed: {
-        
+
     },
     mixins: [
-        // searchMixin
+        searchMixin
     ]
 }
 </script>
